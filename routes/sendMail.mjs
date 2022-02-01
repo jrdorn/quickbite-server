@@ -1,7 +1,7 @@
 import { viewSaveSend } from "../restaurants/viewSaveSend.mjs";
 import boxen from "boxen";
 import chalk from "chalk";
-import dotenv from "dotenv";
+
 import express from "express";
 import inquirer from "inquirer";
 import nodemailer from "nodemailer";
@@ -14,13 +14,8 @@ export let sendMail = (
   selectedRestaurant,
   restaurants
 ) => {
-  //get email credentials from env
-  const config = dotenv.config();
-  if (config.error) {
-    throw config.error;
-  }
-  const email = config.parsed.UNAME;
-  const pw = config.parsed.APP_PW;
+  const email = process.env.UNAME;
+  const pw = process.env.APP_PW;
 
   //initialize server
   const app = express();

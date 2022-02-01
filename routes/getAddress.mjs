@@ -1,4 +1,3 @@
-import { key } from "../key.mjs";
 import boxen from "boxen";
 import chalk from "chalk";
 import fetch from "node-fetch";
@@ -7,7 +6,7 @@ import fetch from "node-fetch";
 export const getAddress = (coords) => {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${key}`,
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${process.env.MAPS_KEY}`,
       {
         method: "post",
         headers: {
