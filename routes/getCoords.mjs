@@ -1,6 +1,10 @@
+/**
+ keep most of the function in CLI 
+ only keep the fetch request itself on server side
+ maybe uninstall node-fetch from CLI 
+ */
+
 import { key } from "../key.mjs";
-import boxen from "boxen";
-import chalk from "chalk";
 import fetch from "node-fetch";
 
 //find lat/lng of user
@@ -20,24 +24,6 @@ export const getCoords = (macAddress) => {
       },
       //serialize body value
       body: JSON.stringify(body),
-    })
-      .then((res) => res.json())
-      .then((json, err) => {
-        if (err) {
-          reject(console.error(`Error: ${err}`));
-        } else {
-          //return geocoordinates
-          resolve(json.location);
-        }
-      })
-      .catch((err) => {
-        return Promise.reject(
-          console.error(
-            chalk.red(
-              boxen(`Error: ${err}`, { padding: 1, borderStyle: "round" })
-            )
-          )
-        );
-      });
+    }).then((res) => res.json());
   });
 };
