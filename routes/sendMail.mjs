@@ -1,26 +1,10 @@
-import { viewSaveSend } from "../restaurants/viewSaveSend.mjs";
-import boxen from "boxen";
-import chalk from "chalk";
-
-import express from "express";
-import inquirer from "inquirer";
 import nodemailer from "nodemailer";
 
 //send directions via email or SMS
-export let sendMail = (
-  directions,
-  recipient,
-  originCoords,
-  selectedRestaurant,
-  restaurants
-) => {
+export let sendMail = (directions, recipient) => {
+  //get login credentials to send directions via email
   const email = process.env.UNAME;
   const pw = process.env.APP_PW;
-
-  //initialize server
-  const app = express();
-  const port = 3000;
-  app.listen(port, () => {});
 
   //SMTP transporter
   (async () => {
@@ -42,35 +26,5 @@ export let sendMail = (
       subject: `Directions to restaurant`,
       text: `${directions}`,
     });
-  })()
-    .catch((err) => {
-      console.error(
-        chalk.red(boxen(`Error: ${err}`, { padding: 1, borderStyle: "round" }))
-      );
-      process.exit(0);
-    })
-    .then(() => {
-      //display success and return to menu
-
-      inquirer
-        .prompt([
-          {
-            type: "list",
-            name: "sendMail",
-            prefix: "",
-            suffix: "\n",
-            message: chalk.green(
-              boxen(`Directions sent to ${recipient}`, {
-                borderStyle: "round",
-                padding: 1,
-              })
-            ),
-            choices: ["Return"],
-          },
-        ])
-        .then(() => {
-          console.clear();
-          viewSaveSend(originCoords, selectedRestaurant, restaurants);
-        });
-    });
+  })();
 };
