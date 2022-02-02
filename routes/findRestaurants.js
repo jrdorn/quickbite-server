@@ -1,7 +1,7 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 //search for restaurants near location
-export const findRestaurants = (addr) => {
+const findRestaurants = (addr) => {
   fetch(
     `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${addr.myCoords.lat}%2c${addr.myCoords.lng}&rankby=distance&type=restaurant&key=${process.env.MAPS_KEY}`,
     {
@@ -13,3 +13,5 @@ export const findRestaurants = (addr) => {
     }
   ).then((res) => res.json());
 };
+
+module.exports = findRestaurants;

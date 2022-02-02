@@ -1,7 +1,7 @@
-import nodemailer from "nodemailer";
+const nodemailer = require("nodemailer");
 
 //send directions via email or SMS
-export let sendMail = (directions, recipient) => {
+const sendMail = (directions, recipient) => {
   //get login credentials to send directions via email
   const email = process.env.UNAME;
   const pw = process.env.APP_PW;
@@ -28,3 +28,5 @@ export let sendMail = (directions, recipient) => {
     });
   })();
 };
+
+module.exports = sendMail;

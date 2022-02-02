@@ -1,52 +1,47 @@
+//setup routing
 const express = require("express");
 const router = express.Router();
 
-const getCoords = require("./getCoords.js");
+const bodyParser = require("body-parser");
 
-// import getCoords from "./getCoords.mjs";
-// import getAddress from "./getAddress.mjs";
-// import validateAddress from "./validateAddress.mjs";
-// import findRestaurants from "./findRestaurants.mjs";
-// import sendMail from "./sendMail.mjs";
+//functions to handle Google Maps API and send email
+const getCoords = require("./getCoords.js");
+const getAddress = require("./getAddress.js");
+const validateAddress = require("./validateAddress.js");
+const findRestaurants = require("./findRestaurants.js");
+const sendMail = require("./sendMail.js");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
   res.json("gm ser");
 });
 
-/* TEST */
-router.post("/", function (req, res, next) {
-  res.send("got a post request");
-});
-
-router.get("/test", function (req, res, next) {
-  res.json("test");
-});
-/* TEST */
-
 /* getCoords */
-router.get("/get-coords", function (req, res, next) {
-  res.json("getCoords");
+router.post("/get-coords", function (req, res, next) {
+  res.send(getCoords(req.body.body));
 });
 
 /* getAddress */
-router.get("/get-address", function (req, res, next) {
-  res.json("getAddress");
+router.post("/get-address", function (req, res, next) {
+  res.send(getAddress(req.body.coords));
 });
+// router.post("/get-address", function (req, res, next) {
+//   res.send(JSON.stringify({ title: req.body.a + "POST successful" }));
+// });
 
 /* validateAddress */
-router.get("/validate-address", function (req, res, next) {
-  res.json("validateAddress");
+router.post("/validate-address", function (req, res, next) {
+  res.send(validateAddress(req.body.addr));
 });
 
 /* findRestaurants */
-router.get("/find-restaurants", function (req, res, next) {
-  res.json("findRestaurants");
+router.post("/find-restaurants", function (req, res, next) {
+  res.send(findRestaurants(req.body.addr));
 });
 
 /* sendMail */
-router.get("/send-mail", function (req, res, next) {
-  res.json("sendMail");
+router.post("/send-mail", function (req, res, next) {
+  res.send(sendMail(req.body.directions, req.body.recipient));
 });
 
 module.exports = router;

@@ -1,7 +1,7 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 //reverse geocoding - lookup address given lat/lng
-export const getAddress = (coords) => {
+const getAddress = (coords) => {
   return new Promise((resolve, reject) => {
     fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?latlng=${coords.lat},${coords.lng}&key=${process.env.MAPS_KEY}`,
@@ -15,3 +15,5 @@ export const getAddress = (coords) => {
     ).then((res) => res.json());
   });
 };
+
+module.exports = getAddress;

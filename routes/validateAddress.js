@@ -1,7 +1,7 @@
-import fetch from "node-fetch";
+const fetch = require("node-fetch");
 
 //validate user address with Maps API
-export const validateAddress = (addr) => {
+const validateAddress = (addr) => {
   //validate user address
   fetch(
     `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${addr}&fields=formatted_address%2Cgeometry&inputtype=textquery&key=${process.env.MAPS_KEY}`,
@@ -14,3 +14,5 @@ export const validateAddress = (addr) => {
     }
   ).then((res) => res.json());
 };
+
+module.exports = validateAddress;
