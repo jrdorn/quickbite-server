@@ -11,9 +11,9 @@ const validateAddress = require("./validateAddress.js");
 const findRestaurants = require("./findRestaurants.js");
 const sendMail = require("./sendMail.js");
 
-/* GET home page. */
+/* GET home page */
 router.get("/", function (req, res, next) {
-  res.json("gm ser");
+  res.json("gm");
 });
 
 /* getCoords */
@@ -36,6 +36,11 @@ router.post("/validate-address", function (req, res, next) {
 
 /* findRestaurants */
 router.post("/find-restaurants", function (req, res, next) {
+  res.send(findRestaurants(req.body.addr));
+});
+
+/* fetchDirections */
+router.post("/fetch-directions", function (req, res, next) {
   res.send(findRestaurants(req.body.addr));
 });
 
