@@ -32,7 +32,7 @@ const getCoords = (body) => {
           "Content-Type": "application/json",
         },
         //serialize body value
-        body: JSON.stringify(body),
+        body: body,
       }
     )
       .then((res) => res.json())

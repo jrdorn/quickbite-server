@@ -20,6 +20,9 @@ router.get("/", function (req, res, next) {
 router.post("/get-coords", function (req, res, next) {
   getCoords(req.body).then((answer) => res.send(answer));
 });
+router.get("/get-coords", function (req, res, next) {
+  res.send(req.body);
+});
 
 /* getAddress */
 router.post("/get-address", function (req, res, next) {
