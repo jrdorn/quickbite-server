@@ -31,12 +31,18 @@ const getCoords = (body) => {
           Accept: "application/json",
           "Content-Type": "application/json",
         },
-        //serialize body value
-        body: body,
+        // // // // // //
+        body: JSON.stringify(body),
       }
     )
       .then((res) => res.json())
-      .then((json) => resolve(json));
+      .then((json, err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(json);
+        }
+      });
   });
 };
 

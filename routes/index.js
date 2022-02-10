@@ -21,13 +21,14 @@ router.post("/get-coords", function (req, res, next) {
   getCoords(req.body).then((answer) => res.send(answer));
 });
 
-/** */
+//
+//
 /** for test purposed, send req.body back to user */
 router.post("/testback", function (req, res, next) {
   res.send(req.body);
 });
-/** */
-/** */
+//
+//
 
 /* getAddress */
 router.post("/get-address", function (req, res, next) {
