@@ -18,24 +18,8 @@ router.get("/", function (req, res, next) {
 
 /* getCoords */
 router.post("/get-coords", function (req, res, next) {
-  // res.send(getCoords(req.body.body));
-  res.send(req.body); //test call, return CLI request
+  res.send(getCoords(req.body));
 });
-
-/* getCoords */
-router.post("/get-coords", function (req, res, next) {
-  // res.send(getCoords(req.body.body));
-  res.send(req.body); //test call, return CLI request
-});
-
-/* */
-router.post("/the-answer", function (req, res, next) {
-  res.send("42"); //test call, return CLI request
-});
-router.get("/the-answer", function (req, res, next) {
-  res.send("42"); //test call, return CLI request
-});
-/* */
 
 /* getAddress */
 router.post("/get-address", function (req, res, next) {

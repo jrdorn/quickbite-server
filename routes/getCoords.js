@@ -34,7 +34,9 @@ const getCoords = (body) => {
         //serialize body value
         body: JSON.stringify(body),
       }
-    ).then((res) => res.json());
+    )
+      .then((res) => res.json())
+      .then((json) => resolve(json));
   });
 };
 
