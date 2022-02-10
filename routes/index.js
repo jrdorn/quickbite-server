@@ -18,7 +18,7 @@ router.get("/", function (req, res, next) {
 
 /* getCoords */
 router.post("/get-coords", function (req, res, next) {
-  res.send(getCoords(req.body));
+  getCoords(req.body).then((answer) => res.send(answer));
 });
 
 /* getAddress */
