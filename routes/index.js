@@ -23,7 +23,7 @@ router.post("/get-coords", function (req, res, next) {
 
 //
 //
-/** for test purposed, send req.body back to user */
+/** for test purposes, send req.body back to user */
 router.post("/testback", function (req, res, next) {
   res.send(req.body);
 });
@@ -32,11 +32,14 @@ router.post("/testback", function (req, res, next) {
 
 /* getAddress */
 router.post("/get-address", function (req, res, next) {
-  res.send(getAddress(req.body.coords));
+  getAddress(req.body).then((answer) => res.send(answer));
 });
-// router.post("/get-address", function (req, res, next) {
-//   res.send(JSON.stringify({ title: req.body.a + "POST successful" }));
-// });
+//
+//
+//
+//
+//
+//
 
 /* validateAddress */
 router.post("/validate-address", function (req, res, next) {
