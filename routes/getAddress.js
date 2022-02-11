@@ -12,7 +12,9 @@ const getAddress = (coords) => {
           "Content-Type": "application/json",
         },
       }
-    ).then((res) => res.json());
+    )
+      .then((res) => resolve(res.json()))
+      .catch((err) => reject(err));
   });
 };
 
