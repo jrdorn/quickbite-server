@@ -20,7 +20,8 @@ const getAddress = (coords) => {
         } else {
           resolve(json);
         }
-      });
+      })
+      .catch((err) => console.err(err));
   });
 };
 
