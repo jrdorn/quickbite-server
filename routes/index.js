@@ -32,7 +32,10 @@ router.post("/testback", function (req, res, next) {
 
 /* getAddress */
 router.post("/get-address", function (req, res, next) {
-  getAddress(req.body).then((answer) => res.send(answer));
+  (async () => {
+    const answer = await getAddress(req.body);
+    res.send(answer);
+  })();
 });
 //
 //
