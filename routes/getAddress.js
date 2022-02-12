@@ -46,7 +46,12 @@ const getAddress = (coords) => {
         },
       }
     )
+      .catch((error) => console.log(error))
+
       .then((res) => res.json())
+
+      .catch((error) => console.log(error))
+
       .then((json, err) => {
         if (err) {
           reject(err);
