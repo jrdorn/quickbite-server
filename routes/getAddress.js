@@ -14,14 +14,7 @@ const getAddress = (coords) => {
       }
     )
       .then((res) => res.json())
-      .then((json, err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(json);
-        }
-      })
-      .catch((err) => console.err(err));
+      .then((json) => resolve(json));
   });
 };
 
