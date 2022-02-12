@@ -31,7 +31,7 @@ const getAddress = async (coords) => {
       },
     }
   );
-  return response.json();
+  return await response.json();
 };
 
 module.exports = getAddress;
