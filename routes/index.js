@@ -35,19 +35,19 @@ router.post("/get-address", function (req, res, next) {
   getAddress(req.body).then((answer) => res.send(answer));
 });
 
-//
-//
 /* validateAddress */
 router.post("/validate-address", function (req, res, next) {
   validateAddress(req.body).then((answer) => res.send(answer));
 });
-//
-//
 
+//
+//
 /* findRestaurants */
 router.post("/find-restaurants", function (req, res, next) {
-  res.send(findRestaurants(req.body.addr));
+  findRestaurants(req.body).then((answer) => res.send(answer));
 });
+//
+//
 
 /* fetchDirections */
 router.post("/fetch-directions", function (req, res, next) {
