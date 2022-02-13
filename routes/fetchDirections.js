@@ -1,10 +1,10 @@
 const fetch = require("node-fetch");
 
 // fetch directions from origin to selected restaurant
-const fetchDirections = (origin, dest) => {
+const fetchDirections = (req) => {
   return new Promise((resolve, reject) => {
     fetch(
-      `https://maps.googleapis.com/maps/api/directions/json?origin=${origin.lat},${origin.lng}&destination=${dest.lat},${dest.lng}&mode=walking&key=${process.env.MAPS_KEY}`,
+      `https://maps.googleapis.com/maps/api/directions/json?origin=${req.origin.lat},${req.origin.lng}&destination=${req.dest.lat},${req.dest.lng}&mode=walking&key=${process.env.MAPS_KEY}`,
       {
         method: "get",
         headers: {
