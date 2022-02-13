@@ -9,6 +9,7 @@ const getCoords = require("./getCoords.js");
 const getAddress = require("./getAddress.js");
 const validateAddress = require("./validateAddress.js");
 const findRestaurants = require("./findRestaurants.js");
+const fetchDirections = require("./fetchDirections.js");
 const sendMail = require("./sendMail.js");
 
 /* GET home page */

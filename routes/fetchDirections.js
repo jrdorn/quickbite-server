@@ -24,3 +24,5 @@ const fetchDirections = (req) => {
       });
   });
 };
+
+module.exports = fetchDirections;
