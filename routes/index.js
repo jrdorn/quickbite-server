@@ -46,18 +46,14 @@ router.post("/find-restaurants", function (req, res, next) {
   findRestaurants(req.body).then((answer) => res.send(answer));
 });
 
-//
-//
 /* fetchDirections */
 router.post("/fetch-directions", function (req, res, next) {
   fetchDirections(req.body).then((answer) => res.send(answer));
 });
-//
-//
 
 /* sendMail */
 router.post("/send-mail", function (req, res, next) {
-  res.send(sendMail(req.body.directions, req.body.recipient));
+  sendMail(req.body).then((answer) => res.send(answer));
 });
 
 module.exports = router;
