@@ -12,6 +12,15 @@ const fetchDirections = (origin, dest) => {
           "Content-Type": "application/json",
         },
       }
-    ).then((res) => res.json());
+    )
+      .then((res) => res.json())
+
+      .then((json, err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(json);
+        }
+      });
   });
 };
